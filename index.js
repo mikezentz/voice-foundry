@@ -2,6 +2,21 @@ const wordlist = require('./wordlist.json')
 const aws = require('aws-sdk')
 const documentClient = new aws.DynamoDB.DocumentClient()
 
+const dialpadMap = {
+  '2': 'ABC',
+  '3': 'DEF',
+  '4': 'GHI',
+  '5': 'JKL',
+  '6': 'MNO',
+  '7': 'PQRS',
+  '8': 'TUV',
+  '9': 'WXYZ'
+}
+
+exports.getRandomChar = (array) => {
+  return array.split('')[Math.floor(Math.random() * array.length)]
+}
+
 exports.numberToWords = (wordlist, userPhoneNumber) => {
   const vanityNumbers = []
   for (const word in wordlist) {
@@ -11,14 +26,24 @@ exports.numberToWords = (wordlist, userPhoneNumber) => {
       vanityNumbers.push(formattedVanityNumber)
     }
   }
+
+  while (vanityNumbers.length < 5) {
+    let randomNumber = exports.getRandomChar(userPhoneNumber)
+    if (randomNumber != '0' && randomNumber != '1') {
+      let newNumber = userPhoneNumber.replace(randomNumber, exports.getRandomChar(dialpadMap[randomNumber]))
+
+      if (!vanityNumbers.includes(newNumber)) {
+        vanityNumbers.push(newNumber)
+      }
+    }
+
+  }
   return (vanityNumbers.slice(0, 5))
 }
 
 exports.handler = async (event, context, callback) => {
 
   const callernumber = event.Details.Parameters.userNumber.replace('+1', '')
-
-  //AWS Connect Inbound Number 21F-EEL-S177, 213-335-7177
 
   const vanityNumbers = exports.numberToWords(wordlist, callernumber)
 

@@ -13,9 +13,18 @@ const event = {
 
 const vanity = require('../index')
 
+describe('getRandomChar', () => {
+  it('should return a random char from any given string', () => {
+    let randomChar = vanity.getRandomChar('abc')
+    console.log(randomChar)
+    expect(randomChar).to.have.lengthOf(1)
+  })
+})
+
 describe('#numberToWords', () => {
   it('should return an array of length 5', () => {
-    let numberToWordsTest = vanity.numberToWords(wordlist, '9712492786')
+    let numberToWordsTest = vanity.numberToWords(wordlist, '5029190071')
+    console.log(numberToWordsTest)
     expect(numberToWordsTest).to.have.lengthOf(5)
   })
 })
