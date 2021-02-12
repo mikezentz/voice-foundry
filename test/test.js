@@ -3,6 +3,8 @@ const expect = chai.expect
 const should = chai.should
 const wordlist = require('../wordlist.json')
 
+const vanity = require('../index')
+
 const event = {
   Details: {
     Parameters: {
@@ -10,8 +12,6 @@ const event = {
     }
   }
 }
-
-const vanity = require('../index')
 
 describe('getRandomChar', () => {
   it('should return a random char from any given string', () => {
