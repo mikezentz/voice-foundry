@@ -2,6 +2,10 @@ const wordlist = require('./wordlist.json')
 const AWS = require('aws-sdk')
 const documentClient = new AWS.DynamoDB.DocumentClient()
 
+AWS.config.update({
+  region: 'us-west-2'
+})
+
 const dialpadMap = {
   '2': 'ABC',
   '3': 'DEF',
