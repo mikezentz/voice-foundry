@@ -1,6 +1,10 @@
 const wordlist = require('./wordlist.json')
-const aws = require('aws-sdk')
-const documentClient = new aws.DynamoDB.DocumentClient()
+const AWS = require('aws-sdk')
+const documentClient = new AWS.DynamoDB.DocumentClient()
+
+AWS.config.update({
+  region: 'us-west-2'
+})
 
 const dialpadMap = {
   '2': 'ABC',
@@ -36,24 +40,37 @@ exports.numberToWords = (wordlist, userPhoneNumber) => {
         vanityNumbers.push(newNumber)
       }
     }
-
   }
   return (vanityNumbers.slice(0, 5))
 }
 
 exports.handler = async (event, context, callback) => {
 
-  const callernumber = event.Details.Parameters.userNumber.replace('+1', '')
+  const callerNumber = event.Details.Parameters.userNumber.replace('+1', '')
 
-  const vanityNumbers = exports.numberToWords(wordlist, callernumber)
+  const vanityNumbers = exports.numberToWords(wordlist, callerNumber)
+
+  const params = {
+    TableName: 'callers',
+    Item: {
+      id: callerNumber,
+      vanityNumbers: vanityNumbers,
+      timestamp: Date.now()
+    }
+  }
+
+  try {
+    const data = await documentClient.put(params).promise()
+    console.log(data)
+  } catch (err) {
+    console.log(err)
+  }
 
   const resultMap = {
     vanityNumber1: vanityNumbers[0],
     vanityNumber2: vanityNumbers[1],
     vanityNumber3: vanityNumbers[2]
-
   }
 
   callback(null, resultMap);
-
 };
