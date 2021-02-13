@@ -46,14 +46,14 @@ exports.numberToWords = (wordlist, userPhoneNumber) => {
 
 exports.handler = async (event, context, callback) => {
 
-  const callerNumber = event.Details.Parameters.userNumber.replace('+1', '')
+  const callernumber = event.Details.Parameters.userNumber.replace('+1', '')
 
-  const vanityNumbers = exports.numberToWords(wordlist, callerNumber)
+  const vanityNumbers = exports.numberToWords(wordlist, callernumber)
 
   const params = {
     TableName: 'callers',
     Item: {
-      id: callerNumber,
+      id: callernumber,
       vanityNumbers: vanityNumbers,
       timestamp: Date.now()
     }
