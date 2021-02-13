@@ -4,6 +4,11 @@
 
 Try it Out! Call **_213-335-7177_**
 
+Additions: I set up unit testing with mocha, chai, and travis ci.  I also added
+an option in the contact flow to have the vanity numbers texted to your phone
+using Amazon Pinpoint. I've included screenshots of the contact flow and
+DynamoDB table in the docs folder of this repository.
+
 Each day while working on this project I recorded a sub-3-minute video of my
 thoughts on what I was working on that day.
 - [Day 1](https://github.com/mikezentz/voice-foundry/blob/main/docs/journal/Day1.m4v)
@@ -38,3 +43,19 @@ In order to overcome my knowledge gap I used the official AWS documentation,
 lots of random results to queries on DuckDuckGo and some very good YouTube
 tutorials.  Special thanks to [Cloud Path](https://www.youtube.com/watch?v=ijyeE-pXFk0)
 for this very helpful DynamoDB walk-through.
+
+> What shortcuts did you take that would be a bad practice in production?
+
+While researching to do this project I found out that there are ways to push
+your code into Amazon programmatically.  I would like to learn how to do this as
+it seems this is how most AWS developers probably work.  What I did instead was
+write most of my code in Atom and then copy and paste it into the Lambda editor
+on the AWS console.
+
+> What would you have done with more time? We know you have a life. :-)
+
+It would be neat to design the vanity number algorithm to use two word phrases
+that match some sort of pattern.  For instance verb then noun, or something
+similar.  The goal of a vanity number is memorability and inserting a word into
+the number somewhere only makes for a memorable vanity number by accident and
+not by design.
