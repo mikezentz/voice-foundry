@@ -1,16 +1,15 @@
-var AWS = require("aws-sdk");
-var pinpoint = new AWS.Pinpoint();
+// Lambda for sending an SMS message to caller
 
-//main entry
+const AWS = require("aws-sdk");
+const pinpoint = new AWS.Pinpoint();
+
 exports.handler = (event, context, callback) => {
   console.log("Incoming Event: " + JSON.stringify(event));
 
-  //You must have these attributes set in your Contact Flow prior to invoking lambda function
-  var destinationNumber = event.Details.Parameters.phoneNumber
-  var messageContent = event.Details.Parameters.message
+  const destinationNumber = event.Details.Parameters.phoneNumber
+  const messageContent = event.Details.Parameters.message
 
-  var params = {
-    //ApplicationId must match the ID of the application you created in AWS Mobile Hub
+  const params = {
     ApplicationId: "2cee3a2d297e4cbc9f9637a4ed7ef439",
     MessageRequest: {
       Addresses: {
