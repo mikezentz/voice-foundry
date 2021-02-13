@@ -2,10 +2,6 @@ const wordlist = require('./wordlist.json')
 const AWS = require('aws-sdk')
 const documentClient = new AWS.DynamoDB.DocumentClient()
 
-AWS.config.update({
-  region: 'us-west-2'
-})
-
 const dialpadMap = {
   '2': 'ABC',
   '3': 'DEF',
@@ -46,9 +42,9 @@ exports.numberToWords = (wordlist, userPhoneNumber) => {
 
 exports.handler = async (event, context, callback) => {
 
-  const callernumber = event.Details.Parameters.userNumber.replace('+1', '')
+  const callerNumber = event.Details.Parameters.userNumber.replace('+1', '')
 
-  const vanityNumbers = exports.numberToWords(wordlist, callernumber)
+  const vanityNumbers = exports.numberToWords(wordlist, callerNumber)
 
   const params = {
     TableName: 'callers',
