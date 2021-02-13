@@ -2,7 +2,7 @@
 
 # Voice Foundry Junior Development Project
 
-Try it Out! Call **_[213-335-7177](tel:2133357177)_**
+Try it Out! Call [213-335-7177](tel:2133357177)
 
 Additions: I set up unit testing with mocha, chai, and travis ci.  I also added
 an option in the contact flow to have the vanity numbers texted to your phone
