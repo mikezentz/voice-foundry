@@ -6,8 +6,8 @@ Try it Out! Call:  **_213-335-7177_**
 
 Additions: I set up unit testing with mocha, chai, and travis ci.  I also added
 an option in the contact flow to have the vanity numbers texted to your phone
-using Amazon Pinpoint. I've included screenshots of the contact flow and
-DynamoDB table in the docs folder of this repository.
+using Amazon Pinpoint. I've included screenshots of the [contact flow](https://github.com/mikezentz/voice-foundry/raw/main/docs/img/contactflow.png) and
+[DynamoDB table](https://github.com/mikezentz/voice-foundry/raw/main/docs/img/dynamodb.png).
 
 Each day while working on this project I recorded a sub-3-minute video of my
 thoughts on what I was working on that day.
