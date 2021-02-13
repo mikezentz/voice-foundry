@@ -19,16 +19,16 @@ thoughts on what I was working on that day.
 
 > Record your reasons for implementing the solution the way you did, the struggles you faced and problems you overcame.
 
-My solution was to map the numbers related to english words and do a simple
-find and replace in a loop.  Then I prioritized the numbers that had the most
-English characters replaced and called that "Best".  In cases where there were
-no English words matched in a number pattern I substituted random characters.
-This was to satisfy the constraints of the project.  My personal preference
-would have been to just return, "Sorry mate your number just isn't interesting".
-To make the project a little more interesting I scraped all of the obscure and
-endangered words maintained at [The Phontistery](http://phrontistery.info/) and
-prioritized those over regular English words.  So the order of precedence goes
-like this.
+My solution was to generate a dialpad key for every word in the English language
+and do a simple find and replace in a loop.  Then I prioritized the numbers that
+had the most English characters replaced and called that "Best".  In cases where
+there were no English words matched in a number pattern I substituted random
+characters. This was to satisfy the constraints of the project.  My personal
+preference would have been to just return, "Sorry mate your number just isn't
+interesting". To make the project a little more interesting I scraped all of the
+obscure and endangered words maintained at [The Phontistery](http://phrontistery.info/)
+and prioritized those over regular English words.  So the order of precedence
+goes like this.
   1. numbers replaced with obscure words
   2. numbers replaced with standard words
   3. numbers replaced with nonsense
