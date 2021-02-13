@@ -12,8 +12,7 @@ thoughts on what I was working on that day.
 - [Day 4](https://github.com/mikezentz/voice-foundry/blob/main/docs/journal/Day4.m4v)
 
 
-### Record your reasons for implementing the solution the way you did, the
-### struggles you faced and problems you overcame.
+### Record your reasons for implementing the solution the way you did, the struggles you faced and problems you overcame.
 
 My solution was to map the numbers related to english words and do a simple
 find and replace in a loop.  Then I prioritized the numbers that had the most
