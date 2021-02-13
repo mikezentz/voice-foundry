@@ -46,10 +46,17 @@ exports.handler = async (event, context, callback) => {
 
   const vanityNumbers = exports.numberToWords(wordlist, callerNumber)
 
+  const resultMap = {
+    vanityNumber1: vanityNumbers[0],
+    vanityNumber2: vanityNumbers[1],
+    vanityNumber3: vanityNumbers[2]
+  }
+  callback(null, resultMap);
+
   const params = {
     TableName: 'callers',
     Item: {
-      id: callernumber,
+      id: callerNumber,
       vanityNumbers: vanityNumbers,
       timestamp: Date.now()
     }
@@ -61,12 +68,4 @@ exports.handler = async (event, context, callback) => {
   } catch (err) {
     console.log(err)
   }
-
-  const resultMap = {
-    vanityNumber1: vanityNumbers[0],
-    vanityNumber2: vanityNumbers[1],
-    vanityNumber3: vanityNumbers[2]
-  }
-
-  callback(null, resultMap);
 };
