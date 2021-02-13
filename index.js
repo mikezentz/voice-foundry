@@ -1,10 +1,9 @@
+// Lambda for converting a callers phone number into possible vanity numbers
+// the program saves the top 5 results to DynamoDB and returns the top 3
+
 const wordlist = require('./wordlist.json')
 const AWS = require('aws-sdk')
 const documentClient = new AWS.DynamoDB.DocumentClient()
-
-AWS.config.update({
-  region: 'us-west-2'
-})
 
 const dialpadMap = {
   '2': 'ABC',
@@ -17,10 +16,15 @@ const dialpadMap = {
   '9': 'WXYZ'
 }
 
+// Extracts a random character from an array or string
 exports.getRandomChar = (array) => {
   return array.split('')[Math.floor(Math.random() * array.length)]
 }
 
+// Matches the callers phone number against all words in the english language
+// and then returns the vanity numbers with the most words replaced.  It will
+// do a simple substitution of random characters if less than 5 matches are
+// found via the dictionary method.
 exports.numberToWords = (wordlist, userPhoneNumber) => {
   const vanityNumbers = []
   for (const word in wordlist) {
@@ -44,11 +48,20 @@ exports.numberToWords = (wordlist, userPhoneNumber) => {
   return (vanityNumbers.slice(0, 5))
 }
 
+// Receives the event from Connect, process the vanity numbers, send the resutls
+// to Connect and finally saves the results to DynamoDB
 exports.handler = async (event, context, callback) => {
 
   const callerNumber = event.Details.Parameters.userNumber.replace('+1', '')
 
   const vanityNumbers = exports.numberToWords(wordlist, callerNumber)
+
+  const resultMap = {
+    vanityNumber1: vanityNumbers[0],
+    vanityNumber2: vanityNumbers[1],
+    vanityNumber3: vanityNumbers[2]
+  }
+  callback(null, resultMap);
 
   const params = {
     TableName: 'callers',
@@ -65,12 +78,4 @@ exports.handler = async (event, context, callback) => {
   } catch (err) {
     console.log(err)
   }
-
-  const resultMap = {
-    vanityNumber1: vanityNumbers[0],
-    vanityNumber2: vanityNumbers[1],
-    vanityNumber3: vanityNumbers[2]
-  }
-
-  callback(null, resultMap);
 };

@@ -5,7 +5,7 @@ const wordlist = require('../wordlist.json')
 
 const vanity = require('../index')
 
-const event = {
+const testEvent = {
   Details: {
     Parameters: {
       userNumber: '+19712492786'
@@ -32,7 +32,8 @@ describe('#numberToWords', () => {
 describe('#handler', () => {
   it('should return an object with phone numbers', () => {
     let handlerTest
-    vanity.handler(event, {}, (err, results) => {
+    vanity.handler(testEvent, {}, (err, results) => {
+      console.log(results)
       handlerTest = results
     })
     console.log(handlerTest)
