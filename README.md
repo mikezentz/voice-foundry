@@ -11,10 +11,10 @@ DynamoDB table in the docs folder of this repository.
 
 Each day while working on this project I recorded a sub-3-minute video of my
 thoughts on what I was working on that day.
-- [Day 1](https://github.com/mikezentz/voice-foundry/blob/main/docs/journal/Day1.m4v)
-- [Day 2](https://github.com/mikezentz/voice-foundry/blob/main/docs/journal/Day2.m4v)
-- [Day 3](https://github.com/mikezentz/voice-foundry/blob/main/docs/journal/Day3.m4v)
-- [Day 4](https://github.com/mikezentz/voice-foundry/blob/main/docs/journal/Day4.m4v)
+- [Day 1](https://github.com/mikezentz/voice-foundry/raw/main/docs/journal/Day1.m4v)
+- [Day 2](https://github.com/mikezentz/voice-foundry/raw/main/docs/journal/Day2.m4v)
+- [Day 3](https://github.com/mikezentz/voice-foundry/raw/main/docs/journal/Day3.m4v)
+- [Day 4](https://github.com/mikezentz/voice-foundry/raw/main/docs/journal/Day4.m4v)
 
 
 > Record your reasons for implementing the solution the way you did, the struggles you faced and problems you overcame.
