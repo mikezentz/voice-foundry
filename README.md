@@ -2,7 +2,7 @@
 
 # Junior Development Project
 
-Try it Out! Call:  **_213-335-7177_**
+Try it Out! Call:  **_213-335-7177_** (no longer maintained)
 
 Additions: I set up unit testing with mocha, chai, and travis ci.  I also added
 an option in the contact flow to have the vanity numbers texted to your phone
